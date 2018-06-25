@@ -1,9 +1,9 @@
-<p align="center">
+
 # Local-ea
   is your local guide(s) to a city
 
 MVC based website application. #Local-ea stands for the type of a person who likes to enjoy his city and is willing to suggest to any visitors tips about his town. 
-</p>
+
 ## The project
 
 During Bootcamp 4 by AFDEmp the final project was about a messaging app interacting dynamically with a database. This app has all 3-tier architecture levels. 
