@@ -37,8 +37,10 @@ https://localea.azurewebsites.net
  * [Javascript](https://developer.mozilla.org/bm/docs/Web/JavaScript)
  
  #Back-End && # Database Tools
-* [MVC Core](https://docs.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-2.1)- Design Patern
+* [MVC Core](https://docs.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-2.1)
 * [CSharp](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history)
+* [SQL](https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-2017)
+* [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
 * [Javascript](https://developer.mozilla.org/bm/docs/Web/JavaScript)
 * [JQuery](https://jquery.com/)
 * [JQuery.ajax](http://api.jquery.com/jquery.ajax/)
