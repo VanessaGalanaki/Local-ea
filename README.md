@@ -1,5 +1,5 @@
 
-# Local-ea
+### Local-ea
   is your local guide(s) to a city
 
 MVC based website application. #Local-ea stands for the type of a person who likes to enjoy his city and is willing to suggest to any visitors tips about his town. 
@@ -9,12 +9,12 @@ MVC based website application. #Local-ea stands for the type of a person who lik
 During Bootcamp 4 by AFDEmp the final project was about a messaging app interacting dynamically with a database. This app has all 3-tier architecture levels. 
 The idea was to built an application where the users can loggin or sign up in order to find a Local-e User to ask for suggestions about the city(restaurants, bar, stores, landmarks, sightseeings, events etc.). The idea was to use a Google Map API interface, where the logged user(visitor to a city in need of directions of a local-e), can interact with the local-ea of every city.
 The main functions:
- # Authenticating Users (Visitor Views, Simple Logged User, Local-e User, Admin User and God User(made for project purposes))
- # Users can Login or Sign Up and Log Off
- # Interact with the Map(Location Permission and Select Area to find Local-ea)
- # Real-Time Messaging between Users(real-time notifications)
- # Rate the Local-ea Users once you interact with them
- # Calculating Top Ratings by searched area
+ - [x] **Authenticating Users** (Visitor Views, Simple Logged User, Local-e User, Admin User and God User(made for project purposes))
+ - [x] **Users can Login or Sign Up and Log Off**
+ - [x] **Interact with the Map(Location Permission and Select Area to find Local-ea)**
+ - [x] **Real-Time Messaging between Users(real-time notifications)**
+ - [x] **Rate the Local-ea Users once you interact with them**
+ - [x] **Calculating Top Ratings by searched area**
  
 
 ### Prerequisites
