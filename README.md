@@ -1,5 +1,6 @@
 
-### Local-ea
+![local-ea-logo-clean](https://user-images.githubusercontent.com/37079835/41843543-764f4558-7876-11e8-8bf6-abc7d9b22b68.png)
+
   is your local guide(s) to a city
 
 MVC based website application. #Local-ea stands for the type of a person who likes to enjoy his city and is willing to suggest to any visitors tips about his town. 
