@@ -43,17 +43,18 @@ https://localea.azurewebsites.net
 * [JQuery](https://jquery.com/)
 * [JQuery.ajax](http://api.jquery.com/jquery.ajax/)
 * [Google Maps API](https://developers.google.com/maps/documentation/)
-* [Geolocation Google API] (https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation)
+* [Geolocation Google API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation)
 
 ## Versioning
 
 We use [BitBucket](https://bitbucket.org) for versioning. No versions are available, the repository is private.
 
-## THhe MVSquared Team
+## The MVSquared Team
 * **Michail Kaz** - [MichailKaz](https://github.com/michailkaz)
 * **Vasiliki** - [Vasiliki-t](https://github.com/vasiliki-t)
 * **Mike Magenta** - [Magentapowa](https://github.com/magentapowa)
 * **Vanessa Galanaki** - [Souko](https://github.com/VanessaGalanaki)
+
 
 ## License
 
