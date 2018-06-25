@@ -1,0 +1,119 @@
+﻿@model Project_2_Common.Models.MapViewModels.MapUserModel
+@inject SignInManager<ApplicationUser> signInManager
+
+<meta name="viewport" content="height=device-height , width=device-width , initial-scale=1.0">
+
+<div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn pizza-text" onclick="closeNav()">&times;</a>
+    <div class="overlay-content" id="RatingFash">
+
+    </div>
+    <p id="successpizza" class="success-pizz">Mmm nom nom. Thanks! You have already voted!</p>
+</div>
+
+<div class="map-page-all">
+    <div class="container-fluid">
+        <div class="row">
+            @if (!signInManager.IsSignedIn(User))
+            {
+                <div class="col-md-4 mapPage-left-side visitor">
+                    <div class="row">
+                        <div class="col-md-3 no-padding-sides">
+                            <div class="buddies text-center">
+                                <h5 class="buddies-text font-italic">Buddies</h5>
+                            </div>
+                            <div class="log-history">
+                                @Html.Partial("_LogHistory", Model)
+                            </div>
+                        </div>
+                        <div class="container-fluid chat-popular-container col-md-9">
+                            <div class="popular">
+
+                                <div class="top-locals-title text-center">
+                                    <h3>Top Locals</h3>
+                                </div>
+
+                                <div id="LocalsList" class="row top-locals no-margin-sides">
+                                </div>
+
+                            </div>
+                            <div class="">
+                                @Html.Partial("_ChatView", Model)
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+            else
+            {
+                /*YOU ARE LOGGED IN HERE*/
+                <div class="col-md-4 mapPage-left-side">
+                    <div class="row">
+                        <div class="col-md-3 no-padding-sides">
+                            <div class="buddies text-center">
+                                <h5  class="buddies-text font-italic">Buddies</h5>
+                            </div>
+                            <div class="log-history">
+                                @Html.Partial("_LogHistory", Model)
+                            </div>
+                        </div>
+                        <div class="container-fluid chat-popular-container col-md-9">
+                            <div class="popular">
+                                <div class="top-locals-title text-center">
+                                    <h3>Top Locals</h3>
+                                </div>
+                           
+                                <div id="LocalsList" class="row top-locals no-margin-sides">
+                                   
+                                    <div class="container text-center empty-top">
+                                    </div>
+                                </div>
+                             
+                            </div>
+                            @*<div class="chat">
+                                    @Html.Partial("_ChatView", Model)
+                                </div>*@
+
+                            <div class="chat">        
+                                    @Html.Partial("_ChatView", Model)
+                          
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class=" col-md-4 mapPage-right-side">
+                <div class="map">
+                    <div id="map_wrapper">
+                        <div id="map_canvas" class="mapping">
+                        </div>
+                    </div>
+                    <div id="map-group" class="btn-group btn-group-lg">
+                        <button id="SearchThisArea" class="btn btn-light map-btns">Search this area</button>
+                        <button id="presentLocation" class="btn btn-light map-btns">Refresh Location</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/js/googlemap.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAyfOQ23eFeXk8c2UgUwTgms1HI8FybtRk"></script>
+
+
+    <script>
+        function closeMessage() {
+            document.getElementById("message-area").style.visibility = "hidden"; //βαν
+            document.getElementById("message-area").style.backgroundColor = "none";
+        }
+    </script>
+
+    @if (signInManager.IsSignedIn(User))
+    {
+        <script src="~/js/chatSignalR.js"></script>
+    }
+}

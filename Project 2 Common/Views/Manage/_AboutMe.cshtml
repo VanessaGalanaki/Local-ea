@@ -1,0 +1,10 @@
+﻿
+@model IndexViewModel
+
+<div id="about-me" class="container-fluid about-me">
+    <p>@Model.AboutMe</p>
+</div>
+<div id="about-edit" class="container-fluid about-me about-edit-style">
+    <h4>About me:</h4>
+    <textarea form="formID" asp-for="AboutMe" class="form-control form-about-edit" rows="5" id="comment" placeholder="Write something about you"></textarea>
+</div>

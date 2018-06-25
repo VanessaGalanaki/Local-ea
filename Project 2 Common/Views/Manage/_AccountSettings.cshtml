@@ -1,0 +1,128 @@
+﻿@inject UserManager<ApplicationUser> _manager
+@model IndexViewModel
+@{
+    ViewData["Title"] = "Account Settings";
+    ViewData.AddActivePage(ManageNavPages.Index);
+}
+
+@using Project_2_Common.Views.Manage
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+
+    var user = await _manager.GetUserAsync(User);
+    var isInRole = await _manager.IsInRoleAsync(user, "Locale");
+
+}
+
+<div class="row text-color">
+    <div class="container text-center">
+        <form id="formID" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-12">
+                    <div class="account-settings">
+                        <h2 class="font-weight-bold">@ViewData["Title"]</h2>
+                        <div asp-validation-summary="All" class=""></div>
+                        <div class="container center-form text-center">
+                            <div class="form-group">
+                                <label asp-for="UserNameStr">Username</label>
+                                <input asp-for="UserNameStr" class="form-control form-viz" @*disabled*@ />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                @if (Model.IsEmailConfirmed)
+                                {
+                                    <div class="input-group">
+                                        <input asp-for="Email" class="form-control form-viz" />
+                                        <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <input asp-for="Email" class="form-control form-viz" />
+                                    <button asp-action="SendVerificationEmail" class="btn my-btn btn-lg ver">Send verification email</button>
+                                }
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PhoneNumber"></label>
+                                <input asp-for="PhoneNumber" class="form-control form-viz" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="File"></label>
+                                <input asp-for="File" class="form-control form-viz" type="file" />
+                            </div>
+
+
+                            @await Html.PartialAsync("_ManageNav")
+                        </div>
+                        @if (isInRole)
+                        {
+                            <div class="text-center">
+                                @Html.Partial("_StatusMessage", Model.StatusMessage)
+                            </div>
+
+                            <div class="text-center">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                            </div>
+
+
+                            <div class="form-group checkbox-m">
+                                <label asp-for="showMeOnMap">
+                                    Show me on map
+                                </label>
+                                <input asp-for="showMeOnMap" type="checkbox" class="form-control" />
+                            </div>
+                            <div id="dLat" class="form-group">
+                                <input asp-for="lat" class="form-control" value="@Model.lat" type="hidden" />
+                            </div>
+                            <div id="dLon" class="form-group">
+                                <input asp-for="lon" class="form-control" value="@Model.lon" type="hidden" />
+                            </div>
+
+                            <button id="presentLocation" class="location btn btn-lg my-btn">Find my location</button>
+                        }
+                        else
+                        {
+
+                             <div class="col-md-12 ">
+                                <a asp-controller="Profile" asp-action="DeleteUser" asp-route-id="@Model.Id" class="btn btn-danger btn-lg ">Deactivate Account</a>
+                            </div>  
+                        }
+                    </div>
+                </div>
+
+                @if (isInRole)
+                {
+                    <div class="col-8 map-account-settings">
+                        <div class="form-group">
+                            <div>
+                                <p id="myLocOutput"></p>
+                                <p id="mapErrorMsg2"></p>
+                            </div>
+                            <div id="map_wrapper">
+                                <div id="map_canvas" class="mapping">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 pass deactivate-btn">
+                        <a asp-controller="Manage" asp-action="LocaleDeactivate" asp-route-id="@Model.Id" class="btn btn-lg my-btn">Deactivate Local</a>
+                    </div>
+                    <div class="col-md-12 deactivate-btn">
+                        <a asp-controller="Profile" asp-action="DeleteUser" asp-route-id="@Model.Id" class="btn btn-danger btn-lg ">Deactivate Account</a>
+                    </div>  
+                }
+            </div>
+                 
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/profileMap.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAyfOQ23eFeXk8c2UgUwTgms1HI8FybtRk"></script>
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

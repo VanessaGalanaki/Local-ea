@@ -1,0 +1,49 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+@section Styles{
+    <meta name="viewport" content="height=device-height, initial-scale=1.0">
+}
+
+<div class="background-image"></div>
+
+<div class="row no-margin-sides">
+    <div class="col-md-12">
+        <div class="container login-panel text-center">
+            <div class="login-container">
+                <img class="img-fluid logo-padding" src="~/images/local-ea-Logo-clean.png" />
+                <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                    <h4>Create a new account.</h4>
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control form-viz" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <input asp-for="Password" class="form-control form-viz" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword"></label>
+                        <input asp-for="ConfirmPassword" class="form-control form-viz" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <label class="checkbox-inline btn btn-danger local-button">
+                        <input checked data-toggle="toggle" type="checkbox"> Become A Local
+                    </label>
+                    
+                    <button type="submit" class="btn btn-lg font-weight-bold login-btn-opac btn-default">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

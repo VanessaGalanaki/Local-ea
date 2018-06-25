@@ -1,0 +1,23 @@
+﻿@model Project_2_Common.Models.MapViewModels.MapUserModel
+@inject SignInManager<ApplicationUser> signInManager
+
+<div id="chat-buddies" class="log-all">
+    @if (signInManager.IsSignedIn(User))
+    {
+        @foreach (var buddy in Model.MyChatBuddies)
+        {
+
+            <div data-avatar="@buddy.Avatar" data-id='@buddy.Id' data-name="@buddy.UserNameStr" class="clearfix text-center chat-with-me log">
+                <div class="about">
+                    <img id="buddy-avatar" class="avatar avatar-image rounded-circle img-fluid" src="@("\\img\\Avatars\\" + buddy.Avatar)" alt="avatar" />
+                    <div class="about">
+                        <div class="name">@buddy.UserNameStr</div>
+                        <div class="status">
+                            <span id="unread" value="0"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

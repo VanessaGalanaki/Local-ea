@@ -1,0 +1,103 @@
+﻿@model List<ApplicationUser>
+@inject UserManager<ApplicationUser> _manager
+@{ 
+    var me = await _manager.GetUserAsync(User);
+    var IamGod = await _manager.IsInRoleAsync(me, "God");
+}
+
+<div class="container align-content-center">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="adminView">
+                <table class="table user-data">
+                    <tbody class="adminbg">
+                        <tr>
+                            <th class="table-data">
+                                User
+                            </th>
+                            <th class="table-data">
+                                Email
+                            </th>
+                            <th class="table-data">
+                                Type
+                            </th>
+
+                            @if (IamGod)
+                            {
+                            <th class="table-data">
+                                Messages
+                            </th>
+                            }
+                            else
+                            {
+                            <th class="table-data">
+                                Define Role
+                            </th>
+                            <th class="table-data">
+                                Delete User
+                            </th>
+                            }
+                        </tr>
+                        @foreach (var user in Model)
+                        {
+
+                            <tr class="user">
+                                <td class="table-data">
+                                    @if (user.Id != me.Id)
+                                    {
+                                        <a target="_blank" asp-area="" asp-controller="Manage" asp-action="VisitorView"  asp-route-id="@user.Id">
+                                            @user.UserNameStr
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a target="_blank" asp-area="" asp-controller="Manage" asp-action="Index">
+                                            @user.UserNameStr
+                                        </a>}
+                                </td>
+                                <td class="table-data">
+                                    @user.Email
+                                </td>
+
+                                @{ var roles = await _manager.GetRolesAsync(user);}
+
+                                <td class="table-data">
+                                    @{var role = (roles.Contains("Locale")) ? "Local" : "User";}
+                                    @role
+                                </td>
+
+
+                                <td class="table-data">
+                                @if (IamGod)
+                                {
+                                <a asp-area="" asp-controller="Profile" asp-action="GodMessageView" asp-route-id="@user.Id">View Messages</a>
+                                }
+                                else
+                                {
+                                <form method="POST">
+                                    <button asp-controller="Profile" asp-action="UpDown" asp-route-id="@user.Id" class="btn">
+                                        @{var upDown = (roles.Contains("Admin")) ? "Downgrade" : "Upgrade to Admin";}
+                                        @upDown
+                                    </button>
+                                </form>                               
+                                }
+                                </td> 
+                                 @if (!IamGod)
+                                 {
+                                    <td>
+                                        <form method="POST">
+                                            <button asp-controller="Profile" asp-action="DeleteUser" asp-route-id="@user.Id" class="btn btn-danger">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                 }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

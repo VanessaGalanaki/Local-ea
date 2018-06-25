@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Project_2_Common.Infrastructure.POCOs.Rating> 
+
+
+@{ 
+    Layout = null;
+}
+
+<div class="container reviews text-shadow">
+    <h2>Reviews</h2>
+    <table class="table table-striped">
+        <tbody class="reviews-content">
+            <tr>
+                <td>Rank</td>
+                <td>Comments</td>
+                <td>Review by</td>
+            </tr>
+        </tbody>
+
+
+        @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.RatingValue)</td>
+            <td>@Html.DisplayFor(modelItem => item.RatingText)</td>
+            <td>@Html.DisplayFor(modelItem => item.Reviewer.UserNameStr)</td>
+        </tr>
+}
+        </tbody>
+    </table>
+</div>

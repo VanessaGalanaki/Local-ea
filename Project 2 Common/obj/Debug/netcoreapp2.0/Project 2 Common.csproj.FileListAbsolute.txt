@@ -1,0 +1,12 @@
+C:\Users\user\Desktop\mvs-project\Project 2 Common\bin\Debug\netcoreapp2.0\Project 2 Common.deps.json
+C:\Users\user\Desktop\mvs-project\Project 2 Common\bin\Debug\netcoreapp2.0\Project 2 Common.runtimeconfig.json
+C:\Users\user\Desktop\mvs-project\Project 2 Common\bin\Debug\netcoreapp2.0\Project 2 Common.runtimeconfig.dev.json
+C:\Users\user\Desktop\mvs-project\Project 2 Common\bin\Debug\netcoreapp2.0\Project 2 Common.dll
+C:\Users\user\Desktop\mvs-project\Project 2 Common\bin\Debug\netcoreapp2.0\Project 2 Common.pdb
+C:\Users\user\Desktop\mvs-project\Project 2 Common\obj\Debug\netcoreapp2.0\Project 2 Common.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\mvs-project\Project 2 Common\obj\Debug\netcoreapp2.0\Project 2 Common.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\mvs-project\Project 2 Common\obj\Debug\netcoreapp2.0\Project 2 Common.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\mvs-project\Project 2 Common\obj\Debug\netcoreapp2.0\Project 2 Common.AssemblyInfo.cs
+C:\Users\user\Desktop\mvs-project\Project 2 Common\obj\Debug\netcoreapp2.0\Project 2 Common.dll
+C:\Users\user\Desktop\mvs-project\Project 2 Common\obj\Debug\netcoreapp2.0\Project 2 Common.pdb
+C:\Users\user\Desktop\mvs-project\Project 2 Common\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

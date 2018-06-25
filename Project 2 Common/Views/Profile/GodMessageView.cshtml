@@ -1,0 +1,78 @@
+﻿@model Project_2_Common.Models.MapViewModels.MapUserModel
+
+<div class="god-messages-all">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="user-history">
+                    @*@Html.Partial("../MapPage/_LogHistory", Model)*@
+                    @*@Html.Partial("~/Views/MapPage/_LogHistorycshtml", Model)*@
+                    <div id="chat-buddies" class="log-all">
+                        @*@if (signInManager.IsSignedIn(User))
+            {*@
+                        @foreach (var buddy in Model.MyChatBuddies)
+        {
+
+                <div data-avatar="@buddy.Avatar" data-id='@buddy.Id' data-name="@buddy.UserNameStr" class="clearfix text-center chat-with-me log">
+                    <div class="about">
+                        <img id="buddy-avatar" class="avatar avatar-image rounded-circle img-fluid" src="@("\\img\\Avatars\\" + buddy.Avatar)" alt="avatar" />
+                        <div class="about">
+                            <div class="name">@buddy.UserNameStr</div>
+                            <div class="status">
+                                <span id="unread" value="0"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+}
+                        @*}*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 god-chat-his-container">
+                <div class="row">
+                    <div id="messagesList" class="god-chat-history col-md-12" data-id1="@Model.Id" data-id2="">
+                        <div id="chat-dynamic">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Templates*@
+<div id="message-template" class="no-display">
+    <div class="chat-msg col-md-12">
+        <div class="row">
+            <div id="SenderName" class="msg-user col-md-12">
+                Mpampis
+            </div>
+            <div class="msg-send col-md-12">
+                <p id="message-text">Hello. How are you today?zxvzx vzxvzxvzx vzxvzxv zxvzxvzxvz zx</p>
+            </div>
+            <div id="date" class="col-md-12"></div>
+        </div>
+    </div>
+</div>
+
+<div id="message-response-template" class="no-display">
+    <div class="chat-msg col-md-12">
+        <div class="row">
+            <div id="SenderName" class="msg-user col-md-12 text-right msg-user-receive" >
+                Takhs
+            </div>
+            <div class="msg-receive col-md-12">
+                <p id="message-text">Hello. How are you today?zxvzx vzxvzxvzx vzxvzxv zxvzxvzxvz zx</p>
+            </div>
+            <div id="date" class="col-md-12 text-right right30"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/godPageMessages.js"></script>
+
+}

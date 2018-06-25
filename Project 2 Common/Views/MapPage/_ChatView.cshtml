@@ -1,0 +1,140 @@
+﻿@model Project_2_Common.Models.MapViewModels.MapUserModel
+@inject SignInManager<ApplicationUser> signInManager
+<meta name="viewport" content="height=device-height,width=device-width, initial-scale=1.0">
+<link href="~/css/Rating.css" rel="stylesheet" />
+
+<script src="~/js/rating.js"></script>
+
+@{ 
+    var visibility = "visible";
+    var isLoggedIn = false;
+    var bgcolor = "transparent";
+    }
+@if(signInManager.IsSignedIn(User)) { 
+    <meta id="message" me-id="@Model.Id" me-name="@Model.UserNameStr" you-id="" you-name="" />
+    visibility = "hidden";
+    isLoggedIn = true;
+    bgcolor = "transparent";
+}
+else
+{
+    
+}
+
+<div class="chat container-fluid" id="message-area" style="visibility:@visibility;">
+    <div class="row">
+        <div class="chat-title col-md-12">
+            <div class="">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div id="chating-with-name" class="chat-header-title">
+                                <a target="_blank" >Select a local to chat</a>
+                            </div>
+                            <div>
+                            @if (isLoggedIn)
+                            {
+                                <button id="buttonCrown" class="rating" title="Rate this user!!" onclick="openNav()"></button>
+                            } else
+                            {
+                                <button id="buttonCrown" class="rating" title="Rate this user!!"></button>
+                            }
+                            </div>
+                        </div>
+                    </div>
+                    <img id="chating-with-avatar" class="chat-title-avatar" src="~/img/Avatars/Avatar_Default1.jpg" alt="" />
+                </div>
+                <div class="abstop0right0">
+                @if (isLoggedIn)
+                {
+                    <button class="btn btn-sm font15 map-btns" onclick="closeMessage()">&times;</button>
+                } else
+                {
+                    <button class="btn btn-sm map-btns font15">&times;</button>
+                }
+                </div>
+            </div>
+        </div>
+
+        <div id="messagesList" class="chat-history col-md-12 ">
+
+            <div id="chat-dynamic"></div>
+        </div>
+
+        <div class="chat-message col-md-12">
+            <textarea class="my-message no-resize" id="message-to-send" placeholder="Type your message" rows="3" disabled></textarea>
+            <button id="sendButton" class="chat-message-button btn btn-outline-dark">SEND</button>
+        </div>
+    </div>
+</div>
+
+
+
+@*Templates*@
+<div id="message-template" class="no-display">
+    <div class="chat-msg col-md-12">
+        <div class="row">
+            <div id="SenderName" class="col-md-12" >
+            </div>
+            <div class="msg-send col-md-12">
+                <p id="message-text"></p>
+            </div>
+            <div id="date" class="col-md-12"></div>
+        </div>
+    </div>
+</div>
+
+<div id="message-response-template" class="no-display">
+    <div class="chat-msg col-md-12">
+        <div class="row">
+            <div id="SenderName" class="text-right col-md-12 msg-user-receive">
+            </div>
+            <div class="msg-receive col-md-12">
+                <p id="message-text"></p>
+            </div>
+            <div id="date" class="col-md-12 text-right"></div>
+        </div>
+    </div>
+</div>
+
+<div id="chatBuddy-template" class="no-display">
+    <div data-avatar="" data-id="" data-name="" class="clearfix text-center chat-with-me log">
+        <div class="about">
+            <img id="buddy-avatar" class="avatar avatar-image rounded-circle img-fluid" src="" alt="avatar" />
+            <div class="about">
+                <div id="buddy-name" class="name"></div>
+                <div class="status">
+                    <span id="unread" value="0"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="local-template" class="no-display">
+    <div local-id="" class="pop-local">
+        <div class="row">
+            <div class="col-md-2 no-max-width">
+                <img id="local-avatar" class="img rounded-circle local-tmp-avatar" src="" />
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <t id="local-name">Local's Name</t>
+
+
+                    </div>
+                    <div class="col-sm-12" id="allpizzastogether">
+                        <img id="pizzaImageRated" src="" class="rating-icon">
+                        <img id="pizzaImageRated1" src="" class="rating-icon">
+                        <img id="pizzaImageRated2" src="" class="rating-icon">
+                        <img id="pizzaImageRated3" src="" class="rating-icon">
+                        <img id="pizzaImageRated4" src="" class="rating-icon">
+                        <t id="noratings"></t>
+                        <t id="local-rating">Ratings</t>(<t id="local-countRatings">CountRatings</t>)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

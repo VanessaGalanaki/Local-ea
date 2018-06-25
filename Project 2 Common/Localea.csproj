@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-Project_2_Common-3EAB2BB3-57CF-4504-9B6E-CB83C05A86C3</UserSecretsId>
+    <RootNamespace>Project_2_Common</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0-rc1-final" />
+    <PackageReference Include="jQuery-vsdoc" Version="2.1.0" />
+    <PackageReference Include="Sendgrid" Version="9.9.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.1.1" />
+    <PackageReference Include="Google.Apis.Drive.v3" Version="1.33.1.1232" />
+    <PackageReference Include="jQuery" Version="3.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Infrastructure\POCOs\" />
+    <Folder Include="wwwroot\img\Avatars\" />
+    <Folder Include="Views\Shared\StatusCode\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\js\google.map.js" />
+    <Content Remove="Views\Chat\ChatBox %28copy%29.cshtml" />
+    <Content Remove="Views\LocalsList\LocalsList.cshtml" />
+    <Content Remove="Views\Manage\TwoFactorAuthentication.cshtml" />
+    <Content Remove="Views\Manage\ShowRecoveryCodes.cshtml" />
+    <Content Remove="Views\Manage\ResetAuthenticator.cshtml" />
+    <Content Remove="Views\Manage\GenerateRecoveryCodes.cshtml" />
+    <Content Remove="Views\Manage\Disable2fa.cshtml" />
+    <Content Remove="Views\Manage\EnableAuthenticator.cshtml" />
+    <Content Remove="wwwroot\js\notification.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\ManageViewModels\TwoFactorAuthenticationViewModel.cs" />
+    <Compile Remove="Models\ManageViewModels\ShowRecoveryCodesViewModel.cs" />
+    <Compile Remove="Models\ManageViewModels\EnableAuthenticatorViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\js\notification.js" />
+  </ItemGroup>
+</Project>

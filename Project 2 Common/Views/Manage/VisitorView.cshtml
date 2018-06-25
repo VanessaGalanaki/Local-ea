@@ -1,0 +1,74 @@
+﻿@model IndexViewModel
+@{
+
+    ViewData["Title"] = "Profile";
+    //ViewData.AddActivePage(ManageNavPages.Index);
+
+}
+@inject UserManager<ApplicationUser> _manager
+@{
+    var user = await _manager.FindByIdAsync(Model.Id);
+}
+
+<div class="profile-all">
+    @if (await _manager.IsInRoleAsync(user, "Locale"))
+    {
+
+        <div class="row no-margin-sides">
+            <div class="col-md-4">
+                <div class="user-panel profile-left-side text-shadow">
+                    @Html.Partial("_UserInfo", Model)
+                </div>
+
+            </div>
+            <div id="side-panel" class="col-md-8">
+                <div class="profile-panel " id="map-panel">
+
+                    <div class="row">
+                        <div class="col-md-12 profile-reviews-panel" id="dynamicContentContainer">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="profile-panel">
+                            @Html.Partial("_StaticMapPanel")
+                        </div>
+                    </div>
+
+                   
+                </div>
+
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container margin-top-visitor">
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <div class="user-panel profile-left-side">
+                        @Html.Partial("_UserInfo", Model)
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+@section Scripts {
+
+    <script src="~/js/profileMap.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAyfOQ23eFeXk8c2UgUwTgms1HI8FybtRk"></script>
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+    $.get('@Url.Action("VisitorRatingsView", "Manage", new { id = Context.Request.Query["id"]})', function(data){
+            $("#dynamicContentContainer").html(data);
+        });
+
+    </script>
+}

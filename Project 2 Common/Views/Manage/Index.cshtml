@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+}
+
+@model IndexViewModel
+@inject UserManager<ApplicationUser> _manager
+@{
+    var user = await _manager.GetUserAsync(User);
+}
+
+<meta name="viewport" content="height=device-height,width=device-width, initial-scale=1.0">
+<div class="profile-all">
+    <div class="row no-margin-sides">
+        <div class="col-md-4">
+            <div class="user-panel profile-left-side text-shadow">
+                @Html.Partial("_UserInfo", Model)
+            </div>
+
+        </div>
+        <div id="side-panel" class="col-md-8">
+            <div class="profile-panel" id="map-panel">
+                @if (await _manager.IsInRoleAsync(user, "Locale"))
+                {
+                    <div class="row">
+
+                        <div class="col-md-12 profile-reviews-panel" id="dynamicContentContainer">
+                        </div>
+                        <div class="col-md-12">
+                            <div class="">
+                                @Html.Partial("_StaticMapPanel")
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+            <div id="content-panel" class="dn">
+                @Html.Partial("_AccountSettings")
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+    <script src="~/js/profileMap.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAyfOQ23eFeXk8c2UgUwTgms1HI8FybtRk"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+
+      $.get('@Url.Action("ReviewsView", "Manage")', function(content){
+            $("#dynamicContentContainer").html(content);
+        });
+    $("#AccountSettings").click(function () {
+        $("#content-panel").show();
+        $("#map-panel").hide();
+        $("#AccountSettings").hide();
+        $("#BackToProfile").show();
+        $("#about-me-edit").show();
+        $("#about-me").hide();
+        $("#about-edit").show();
+    });
+
+    $("#BackToProfile").click(function () {
+        $("#content-panel").hide();
+        $("#map-panel").show();
+        $("#AccountSettings").show();
+        $("#BackToProfile").hide();
+        $("#about-me").show();
+        $("#about-edit").hide();
+
+    });
+
+         //setInterval(function () {
+        //    $.get("/Manage/TestView").done(function (data) {
+        //        $(data).appendTo(
+        //            $("#content-panel"));
+        //    });
+        //    $("#content-panel").show();
+        //}, 1000);
+
+    </script>
+}

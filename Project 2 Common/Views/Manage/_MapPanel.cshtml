@@ -1,0 +1,62 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData.AddActivePage(ManageNavPages.Index);
+}
+
+<div class="container map-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">
+                @*<h4>@ViewData["Title"]</h4>*@
+                @Html.Partial("_StatusMessage", Model.StatusMessage)
+            </div>
+
+            <div class="text-center">
+                <form method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="showMeOnMap">Show me on map</label>
+                        <input asp-for="showMeOnMap" type="checkbox" class="form-control" />
+                    </div>
+
+                    <div id="dLat" class="form-group">
+                        <input asp-for="lat" class="form-control" value="@Model.lat" type="hidden" />
+                    </div>
+                    <div id="dLon" class="form-group">
+                        <input asp-for="lon" class="form-control" value="@Model.lon" type="hidden" />
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            <p id="myLocOutput"></p>
+                            <p id="mapErrorMsg2"></p>
+                        </div>
+                        <div id="map_wrapper">
+                            <div id="map_canvas" class="mapping">
+                            </div>
+                        </div>
+
+                        <div id="map-group" class="btn-group btn-group-lg">
+                            <button id="presentLocation" class="btn btn-success">Find my location</button>
+                        </div>
+
+                    </div>
+                    @*<div class="form-group">
+                            <label asp-for="Description"></label>
+                            <input asp-for="Description" class="form-control" />
+                        </div>*@
+                    <button type="submit" class="btn btn-default">Save</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/profileMap.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAyfOQ23eFeXk8c2UgUwTgms1HI8FybtRk"></script>
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

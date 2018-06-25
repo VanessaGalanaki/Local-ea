@@ -1,0 +1,65 @@
+﻿@model IndexViewModel
+@inject UserManager<ApplicationUser> _manager
+@{ 
+    var me = await _manager.GetUserAsync(User);
+    var user = await _manager.FindByIdAsync(Model.Id);
+}
+
+
+@{ 
+    var isInRole = await _manager.IsInRoleAsync(user, "Locale");
+}
+
+<div class="row">
+    <div class="card">
+        <div class="user-info text-center">
+            <img width="125" height="125" src="@("\\img\\Avatars\\" + (Model.Avatar == null ? "Avatar_Default1.jpg" : Model.Avatar))" alt="@(Model.UserNameStr + " Profile Picture")" title="Avatar" class="rounded-circle user-avatar"/>
+            <h1>@Model.UserNameStr</h1>
+            <div class="bio">
+
+                @if (isInRole)
+                {
+                    <p>Local</p>
+                }
+                else
+                {
+                    <p>User</p>
+                }
+            </div>
+        </div>
+
+        @if (isInRole || me.Id != user.Id)
+		{
+            <div id="about-me-edit">
+                @Html.Partial("_AboutMe", Model)
+            </div>
+		}
+		else
+		{
+
+        <form method="POST">
+            <button asp-area="" asp-controller="Manage" asp-action="LocaleActivate" asp-route-id="@me.Id" class="btn btn-success btn-lg local-button"
+                    >Become a Locale</button>
+        </form>
+        }
+        <div class="mybuttons">
+            @if (me.Id == user.Id)
+			{
+                <button id="AccountSettings" class="btn btn-lg settings-btn my-btn ">Account Settings</button>
+
+                <form method="POST">
+                    <button asp-area="" asp-controller="File" asp-action="Download" id="Download" class="btn btn-lg my-btn settings-btn"><i class="fa fa-download"></i>  Messages</button>
+                </form>
+
+                <div id="BackToProfile"class="btp">
+                    <button form="formID" type="submit" class="btn btn-lg my-btn settings-btn">Save</button>
+                    <button class="btn btn-lg my-btn settings-btn">Back</button>
+                </div>
+
+			}
+        </div>
+		
+    </div>
+
+</div>
+
