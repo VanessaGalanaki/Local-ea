@@ -60,6 +60,6 @@ We use [BitBucket](https://bitbucket.org) for versioning. No versions are availa
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details. 
 
 
