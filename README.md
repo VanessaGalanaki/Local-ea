@@ -44,6 +44,7 @@ https://localea.azurewebsites.net
 * [Javascript](https://developer.mozilla.org/bm/docs/Web/JavaScript)
 * [JQuery](https://jquery.com/)
 * [JQuery.ajax](http://api.jquery.com/jquery.ajax/)
+* [SignalR](https://www.asp.net/signalr)
 * [Google Maps API](https://developers.google.com/maps/documentation/)
 * [Geolocation Google API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation)
 
