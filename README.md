@@ -24,7 +24,7 @@ In order to run this project you need to install Visual Studio and in order to r
 
 ## Deployment to Azure
 
-https://localea.azurewebsites.net 
+https://localeaa.azurewebsites.net 
 
 
 ## Built With
